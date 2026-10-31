@@ -64,19 +64,15 @@ Upload a CSV in the sidebar, or click **Use sample data**. Each answer has a **S
 python deliverables/walkthrough.py
 ```
 
-It asks the sample questions below and a follow-up, shows a self-correction, and saves charts and `walkthrough_results.json` to `outputs/`.
+It asks the sample questions below and a follow-up, shows a self-correction, and saves charts and `walkthrough_results.json` to `outputs/`. It makes about 20 live LLM calls. `deliverables/walkthrough.ipynb` holds the same steps with their saved outputs; open it in Jupyter to read or rerun it.
 
-**Rebuild the notebook and the PDF report**
-
-```bash
-python deliverables/build_notebook.py
-```
+**Rebuild the PDF report**
 
 ```bash
 python deliverables/generate_report.py
 ```
 
-`build_notebook.py` turns `walkthrough.py` into `walkthrough.ipynb` and runs it, which makes about 20 live LLM calls and rewrites `outputs/`. `generate_report.py` builds `Project_Report.pdf` from those outputs, so run the walkthrough (or the notebook build) first. The report includes `outputs/app_screenshot.jpg` if it exists; that file is a manual capture of the app.
+It builds `Project_Report.pdf` (title page, contents, business understanding, project understanding, architecture diagram, flowchart, final outcome) from the walkthrough's outputs, so run the walkthrough first. The report includes `outputs/app_screenshot.jpg` if it exists; that file is a manual capture of the app.
 
 **Tests** (no API key or network needed; the agent tests use a scripted fake LLM)
 
@@ -125,10 +121,9 @@ Data Analyst Agent/
 │   └── prompts/templates.py   # all LLM prompts
 ├── deliverables/
 │   ├── walkthrough.py         # step-by-step script
-│   ├── build_notebook.py      # builds and runs walkthrough.ipynb from the script
 │   ├── walkthrough.ipynb      # executed notebook
 │   ├── generate_report.py     # builds the PDF from outputs/
-│   └── Project_Report.pdf     # architecture, flowchart, sample outputs, learnings
+│   └── Project_Report.pdf     # business case, architecture, flowchart, results
 ├── sample_data/
 │   ├── generate_sales.py
 │   └── sales.csv
